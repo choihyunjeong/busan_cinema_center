@@ -86,6 +86,18 @@
                 footerUpBtn.classList.remove('active');
                 detailText.classList.remove('active');
             });
+
+            let dateBtn = document.querySelectorAll('.date button');
+            
+            for(let i = 0; i < dateBtn.length; i++) {
+                dateBtn[i].addEventListener('click', () => {
+                    dateBtn.forEach(dateBtnIndex => {
+                        dateBtnIndex.classList.remove('active');
+                    });
+                    dateBtn[i].classList.add('active');
+                });
+            }
+
             
         };//script end
     </script>
@@ -273,11 +285,24 @@
                         </li>
                     </ul>
                 </section><!-- .sub_category end -->
+
                 <section class="section-01">
                     <div class="inner">
                         <h3>상영시간표</h3>
                         <div class="date">
                             <ul>
+                                <li><button>
+                                    <p>금</p>
+                                    <span>28</span>
+                                </button></li>
+                                <li><button>
+                                    <p>토</p>
+                                    <span>29</span>
+                                </button></li>
+                                <li><button>
+                                    <p>일</p>
+                                    <span>31</span>
+                                </button></li>
                                 <li><button>
                                     <p>월</p>
                                     <span>01</span>
@@ -305,6 +330,18 @@
                                 <li><button>
                                     <p>일</p>
                                     <span>07</span>
+                                </button></li>
+                                <li><button>
+                                    <p>월</p>
+                                    <span>08</span>
+                                </button></li>
+                                <li><button>
+                                    <p>화</p>
+                                    <span>09</span>
+                                </button></li>
+                                <li><button>
+                                    <p>수</p>
+                                    <span>10</span>
                                 </button></li>
                             </ul>
                         </div><!-- .date end -->
@@ -856,14 +893,14 @@
                 <section class="notice">
                     <div class="inner">
                         <h3>공지사항</h3>
-                        <div class="notice_list">
-                            <p class="active">[공연] 기획공연 국립오페라단 <잔니 스키키> 티켓오픈 및 조기예매 할인 안내</p>
-                            <p>[공연] 2025 영화드라마 로케이션 투어 <로드씨어터> 참여 신청 안내(무료)</p>
-                            <p>[영화] 2025 영화비평 공모</p>
-                            <p>[공지] 정부지원 국민 영화관람 할인 종료 안내</p>
-                            <p>[공지] 영화의전당 나이트투어 여름 밤마실 안내(일정 변경)</p>
-                            <p>[공지] 2025년도 하반기 수시대관 안내(하늘연극장, 야외극장, 광장)</p>
-                        </div><!-- .notice_list end -->
+                        <ul class="notice_list">
+                            <li>[공연] 기획공연 국립오페라단 <잔니 스키키> 티켓오픈 및 조기예매 할인 안내</p>
+                            <li>[공연] 2025 영화드라마 로케이션 투어 <로드씨어터> 참여 신청 안내(무료)</p>
+                            <li>[영화] 2025 영화비평 공모</p>
+                            <li>[공지] 정부지원 국민 영화관람 할인 종료 안내</p>
+                            <li>[공지] 영화의전당 나이트투어 여름 밤마실 안내(일정 변경)</p>
+                            <li>[공지] 2025년도 하반기 수시대관 안내(하늘연극장, 야외극장, 광장)</p>
+                        </ul><!-- .notice_list end -->
                     </div><!-- .inner end -->
                 </section><!-- .notice end -->
             </div><!-- .wrap end -->
