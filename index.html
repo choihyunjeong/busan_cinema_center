@@ -4,8 +4,938 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화의 전당</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        window.onload = () => {
+            var swiper = new Swiper(".mainslide", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 10000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+            });
+            var swiper = new Swiper(".schedule_slide", {
+                slidesPerView: 1.4,
+                spaceBetween: 20,
+                centeredSlides: true,
+            });
+            var swiper = new Swiper(".event_slide", {
+                rewind: true,
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
+            var swiper = new Swiper(".review_slide", {
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
+
+            let tabBtn = document.querySelectorAll('.tab li');
+            let programList = document.querySelectorAll('.program .list');
+
+            for (let i = 0; i < tabBtn.length; i++) {
+                tabBtn[i].addEventListener('click', () => {
+                    tabBtn.forEach(tabBtnIndex => {
+                        tabBtnIndex.classList.remove('active');
+                    });
+                    programList.forEach(programListIndex => {
+                        programListIndex.classList.remove('active');
+                    });
+                    tabBtn[i].classList.add('active');
+                    programList[i].classList.add('active');
+                });
+            };
+
+            let newsTitle = document.querySelectorAll('.title h3');
+            let newsList = document.querySelectorAll('.news .list');
+
+            for (let i = 0; i < newsTitle.length; i++) {
+                newsTitle[i].addEventListener('click', () => {
+                    newsTitle.forEach(newsTitleIndex => {
+                        newsTitleIndex.classList.remove('active');
+                    });
+                    newsList.forEach(newsListIndex => {
+                        newsListIndex.classList.remove('active');
+                    });
+                    newsList[i].classList.add('active');
+                    newsTitle[i].classList.add('active');
+
+                });
+            };
+
+            let footerDownBtn = document.querySelector('.detail .before');
+            let footerUpBtn = document.querySelector('.detail .after');
+            let detailText = document.querySelector('.detail_text');
+
+            footerDownBtn.addEventListener('click', () => {
+                footerDownBtn.classList.remove('active');
+                footerUpBtn.classList.add('active');
+                detailText.classList.add('active');
+            });
+            footerUpBtn.addEventListener('click', () => {
+                footerDownBtn.classList.add('active');
+                footerUpBtn.classList.remove('active');
+                detailText.classList.remove('active');
+            });
+            
+        };//script end
+    </script>
 </head>
 <body>
-    
+    <div id="wrap">
+        <header class="header">
+            <div class="inner">
+                <h1 class="logo">
+                    <a href="#"><img src="img/logo-w.svg" alt="logo"></a>
+                </h1><!-- .logo end -->
+                <div class="util">
+                    <a href="#" class="ticket"><img src="img/ticket.svg" alt="reservation"></a>
+                    <a href="#" class="global">ENG</a>
+                </div><!-- .util end -->
+            </div><!-- .inner end -->
+        </header><!-- .header end -->
+        <main class="main">
+
+            <section class="main_visual">
+                <div class="swiper mainslide">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide1.jpg" alt="main-slide1">
+                                <div class="text">
+                                    <p>2025.09.03 ~ 2025.09.27</p>
+                                    <h2>제30회 부산국제영화제 개최에 따른 영화관운영일정 안내</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide2.jpg" alt="main-slide2">
+                                <div class="text">
+                                    <p>2025.10.25 19:00</p>
+                                    <h2>장사익×토론토 재즈 오케스트라 <두루마기, 재즈를 입다></h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide3.jpg" alt="main-slide3">
+                                <div class="text">
+                                    <p>2025.11.08 15:00</p>
+                                    <h2>국립오페라단 <잔니 스키키></h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide4.jpg" alt="main-slide4">
+                                <div class="text">
+                                    <p>2025.10.18 ~ 2026.03.02</p>
+                                    <h2>이영란의 감성체험 가루나무모래흙</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide5.jpg" alt="main-slide5">
+                                <div class="text">
+                                    <p>2025.7 ~ 9월 1, 3주 목요일</p>
+                                    <h2>나이트투어 여름 밤마실</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide6.jpg" alt="main-slide6">
+                                <div class="text">
+                                    <p>2025.10.18 ~ 2025.10.22</p>
+                                    <h2>2025 영화드라마 로케이션 투어 <로드씨어터></h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide7.jpg" alt="main-slide7">
+                                <div class="text">
+                                    <p>2025.10.01 ~ 2025.11.12</p>
+                                    <h2><나의 다음 계절> : 무용, 미술, 음악의 복합 문화예술교육 프로그램</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide8.jpg" alt="main-slide8">
+                                <div class="text">
+                                    <p>2025.03 ~ 2025.11 마지막주 수요일 11:00</p>
+                                    <h2><심현정의 영화음악콘서트 - 구원과 고독의 멜로디></h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide9.jpg" alt="main-slide9">
+                                <div class="text">
+                                    <p>2025.12.31 ~ 2026.12.31</p>
+                                    <h2>미래극장</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide10.png" alt="main-slide10">
+                                <div class="text">
+                                    <p>2025.10.18 ~ 2025.12.21</p>
+                                    <h2>영화제작워크숍 Light 5기</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide11.jpg" alt="main-slide11">
+                                <div class="text">
+                                    <p>2025.01.01 ~ 2025.12.31</p>
+                                    <h2>2025 영화의전당 기획공연 라인업</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/main-slide12.png" alt="main-slide12">
+                                <div class="text">
+                                    <h2>영화의 전당 뉴스레터</h2>
+                                </div><!-- .text end -->
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                    </div><!-- .swiper-wrapper end -->
+                    <div class="swiper-pagination"></div>
+                </div><!-- .swiper.mainslide end -->
+            </section><!-- main_visual end -->
+
+            <div class="wrap">
+                <section class="sub_category">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-biff.svg" alt="biff">
+                                </div><!-- .img end -->
+                                <span>BIFF</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-academy.svg" alt="academy">
+                                </div><!-- .img end -->
+                                <span>교육</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-library.svg" alt="library">
+                                </div><!-- .img end -->
+                                <span>영화도서관</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-review.svg" alt="review">
+                                </div><!-- .img end -->
+                                <span>영화와 비평</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-location.svg" alt="location">
+                                </div><!-- .img end -->
+                                <span>오시는 길</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="img">
+                                    <img src="img/tab-icon-notice.svg" alt="notice">
+                                </div><!-- .img end -->
+                                <span>공지사항</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section><!-- .sub_category end -->
+                <section class="section-01">
+                    <div class="inner">
+                        <h3>상영시간표</h3>
+                        <div class="date">
+                            <ul>
+                                <li><button>
+                                    <p>월</p>
+                                    <span>01</span>
+                                </button></li>
+                                <li><button>
+                                    <p>화</p>
+                                    <span>02</span>
+                                </button></li>
+                                <li><button>
+                                    <p>수</p>
+                                    <span>03</span>
+                                </button></li>
+                                <li><button class="active">
+                                    <p>오늘</p>
+                                    <span>04</span>
+                                </button></li>
+                                <li><button>
+                                    <p>내일</p>
+                                    <span>05</span>
+                                </button></li>
+                                <li><button>
+                                    <p>토</p>
+                                    <span>06</span>
+                                </button></li>
+                                <li><button>
+                                    <p>일</p>
+                                    <span>07</span>
+                                </button></li>
+                            </ul>
+                        </div><!-- .date end -->
+                        <div class="swiper schedule_slide">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <strong>시네마테크</strong>
+                                    <ul class="movie">
+                                        <li><a href="#">
+                                            <span>09:40</span>
+                                            <p>아마데우스 오리지널 리마스터링(리플레이)</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>12:40</span>
+                                            <p>모네의 수련. 물과 빛의 마법</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>14:30</span>
+                                            <p>이사</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>17:00</span>
+                                            <p>여름정원</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>19:20</span>
+                                            <p>8과 1/2</p>
+                                        </a></li>
+                                    </ul><!-- .movie end -->
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <strong>소극장</strong>
+                                    <ul class="movie">
+                                        <li><a href="#">
+                                            <span>09:40</span>
+                                            <p>스탑 메이킹 센스</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>11:30</span>
+                                            <p>혐오스런 마츠코의 일생(리플레이)</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>14:00</span>
+                                            <p>아임 스틸 히어</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>16:40</span>
+                                            <p>반 고흐. 밀밭과 구름 낀 하늘</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>18:30</span>
+                                            <p>타히티의 고갱. 잃어버린 낙원</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>20:20</span>
+                                            <p>콜 미 바이 유어 네임(리플레이)</p>
+                                        </a></li>
+                                    </ul><!-- .movie end -->
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <strong>인디+</strong>
+                                    <ul class="movie">
+                                        <li><a href="#">
+                                            <span>11:40</span>
+                                            <p>인디스데이 8월 단편</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>13:20</span>
+                                            <p>우리 둘 사이에</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>15:20</span>
+                                            <p>815사수작전</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>16:50</span>
+                                            <p>다른 것으로 알려질 뿐이지</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>19:40</span>
+                                            <p>꿈꾸는 사진관</p>
+                                        </a></li>
+                                    </ul><!-- .movie end -->
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <strong>중극장</strong>
+                                    <ul class="movie">
+                                        <li><a href="#">
+                                            <span>09:30</span>
+                                            <p>극장판 귀멸의 칼날: 무한성편</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>12:30</span>
+                                            <p>노바디2</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>14:20</span>
+                                            <p>극장판 귀멸의 칼날: 무한성편</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>17:20</span>
+                                            <p>악마가 이사왔다</p>
+                                        </a></li>
+                                        <li><a href="#">
+                                            <span>19:40</span>
+                                            <p>노바디2</p>
+                                        </a></li>
+                                    </ul><!-- .movie end -->
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <strong>하늘연극장</strong>
+                                    <p>상영되는 영화가 없습니다.</p>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <strong>야외극장</strong>
+                                    <p>상영되는 영화가 없습니다.</p>
+                                </div><!-- .swiper-slide end -->
+                            </div><!-- .swiper-wrapper end -->
+                        </div><!-- .swiper.schedule_slide end -->
+                    </div><!-- .inner end -->
+                </section><!-- .section-01 end -->
+                <section class="event">
+                    <div class="inner">
+                        <h3>이벤트</h3>
+                        <div class="swiper event_slide">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#"><img src="img/event-slide1.jpg" alt="event1"></a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#"><img src="img/event-slide2.jpg" alt="event2"></a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#"><img src="img/event-slide3.jpg" alt="event3"></a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#"><img src="img/event-slide4.jpg" alt="event4"></a>
+                                </div><!-- .swiper-slide end -->
+                            </div><!-- .swiper-wrapper end -->
+                            <div class="swiper-pagination"></div>
+                        </div><!-- .swiper.event_slide end -->
+                    </div><!-- .inner end -->
+                </section><!-- .event end -->
+                <section class="program">
+                    <div class="inner">
+                        <h3>현재 상영중인 프로그램</h3>
+                        <ul class="tab">
+                            <li class="active">영화</li>
+                            <li>공연/전시</li>
+                            <li>기타</li>
+                        </ul><!-- .tab end -->
+                        <div class="list active">
+                            <div class="item">
+                                <img src="img/program-movie1.jpg" alt="movie program1">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>9월 한국독립영화 프로그램</strong>
+                                        <p>2025.09.01 ~ 2025.09.30</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>인디플러스</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-movie2.jpg" alt="movie program2">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>2025년 가치봄 정기상영회</strong>
+                                        <p>2025.03.01 ~ 2025.12.31</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>시네마파크</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-movie3.jpg" alt="movie program3">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>2025 작은영화영화제</strong>
+                                        <p>2025.02.05 ~ 2025.12.03</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>인디플러스</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                        </div><!-- .list end -->
+                        <div class="list">
+                            <div class="item">
+                                <img src="img/program-performance1.jpg" alt="performance program1">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>2025 영화드라마 로케이션 투어 <로드씨어터></strong>
+                                        <p>2025.10.18 ~ 2025.10.22</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>영화의 전당 일원</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-performance2.jpg" alt="performance program2">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>이영란의 감성체험 가루나무모래흙</strong>
+                                        <p>2025.10.18 ~ 2026.03.02</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>다목적홀(전시실)</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-performance3.jpg" alt="performance program3">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>이머시브 뮤지컬 <부산포></strong>
+                                        <p>2025.10.30 ~ 2025.11.01</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>야외극장</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                        </div><!-- .list end -->
+                        <div class="list">
+                            <div class="item">
+                                <img src="img/program-etc1.png" alt="etc program1">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>부산국제영화제</strong>
+                                        <p>2025.10.17 ~ 2025.10.26</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>인디플러스</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-etc2.jpg" alt="etc program2">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>부산국제AI영화제</strong>
+                                        <p>2025.12.04 ~ 2025.12.06</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>소극장</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                            <div class="item">
+                                <img src="img/program-etc3.jpg" alt="etc program3">
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <strong>어린이복합문화공간 들락날락</strong>
+                                        <p>화요일 ~ 일요일(10:00 ~ 17:30)</p>
+                                    </div><!-- .text_wrap end -->
+                                    <span>비프힐 1층 들락날락</span>
+                                </div><!-- .text end -->
+                            </div><!-- .item end -->
+                        </div><!-- .list end -->
+                        <div class="detail">
+                            <a href="#">
+                                <p>더보기</p>
+                                <img src="img/program-plus.svg" alt="more">
+                            </a>
+                        </div><!-- .detail end -->
+                    </div><!-- .inner end -->
+                </section><!-- .program end -->
+                <section class="review">
+                    <div class="inner">
+                        <h3>나도 평론가</h3>
+                        <div class="swiper review_slide">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/review1.jpg" alt="review1">
+                                        <div class="contents">
+                                            <div class="text">
+                                                <strong>THE 자연인 : 유튜브의 시대를 향해 날리는 영화의 역습</strong>
+                                                <p>by 김현진</p>
+                                            </div><!-- .text end -->
+                                            <ul class="icon">
+                                                <li>
+                                                    <img src="img/review_icon-view.svg" alt="view-icon">
+                                                    <span>62</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-heart.svg" alt="heart-icon">
+                                                    <span>28</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-chat.svg" alt="chat-icon">
+                                                    <span>21</span>
+                                                </li>
+                                            </ul><!-- .icon end -->
+                                        </div><!-- .contents end -->
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/review2.jpg" alt="review2">
+                                        <div class="contents">
+                                            <div class="text">
+                                                <strong>관계의 (불)가능성에 대한 영화적 형상화 : <괴인>과 <딸에 대하여>를 중심으로</strong>
+                                                <p>by 장지애</p>
+                                            </div><!-- .text end -->
+                                            <ul class="icon">
+                                                <li>
+                                                    <img src="img/review_icon-view.svg" alt="view-icon">
+                                                    <span>54</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-heart.svg" alt="heart-icon">
+                                                    <span>27</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-chat.svg" alt="chat-icon">
+                                                    <span>9</span>
+                                                </li>
+                                            </ul><!-- .icon end -->
+                                        </div><!-- .contents end -->
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/review3.jpg" alt="review3">
+                                        <div class="contents">
+                                            <div class="text">
+                                                <strong>완벽하지 않아서 더 완벽한 우리의 나날들</strong>
+                                                <p>by 박현주</p>
+                                            </div><!-- .text end -->
+                                            <ul class="icon">
+                                                <li>
+                                                    <img src="img/review_icon-view.svg" alt="view-icon">
+                                                    <span>32</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-heart.svg" alt="heart-icon">
+                                                    <span>15</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-chat.svg" alt="chat-icon">
+                                                    <span>4</span>
+                                                </li>
+                                            </ul><!-- .icon end -->
+                                        </div><!-- .contents end -->
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/review4.jpg" alt="review4">
+                                        <div class="contents">
+                                            <div class="text">
+                                                <strong>무언의 응답이라는 시선</strong>
+                                                <p>by 손민후</p>
+                                            </div><!-- .text end -->
+                                            <ul class="icon">
+                                                <li>
+                                                    <img src="img/review_icon-view.svg" alt="view-icon">
+                                                    <span>36</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-heart.svg" alt="heart-icon">
+                                                    <span>12</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-chat.svg" alt="chat-icon">
+                                                    <span>5</span>
+                                                </li>
+                                            </ul><!-- .icon end -->
+                                        </div><!-- .contents end -->
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#">
+                                        <img src="img/review5.jpg" alt="review5">
+                                        <div class="contents">
+                                            <div class="text">
+                                                <strong>이끼, 녹색 포효</strong>
+                                                <p>by 조우민</p>
+                                            </div><!-- .text end -->
+                                            <ul class="icon">
+                                                <li>
+                                                    <img src="img/review_icon-view.svg" alt="view-icon">
+                                                    <span>49</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-heart.svg" alt="heart-icon">
+                                                    <span>23</span>
+                                                </li>
+                                                <li>
+                                                    <img src="img/review_icon-chat.svg" alt="chat-icon">
+                                                    <span>19</span>
+                                                </li>
+                                            </ul><!-- .icon end -->
+                                        </div><!-- .contents end -->
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                                <div class="swiper-slide">
+                                    <a href="#" class="all">
+                                        <img src="img/review-more.svg" alt="">
+                                        <p>전체보기</p>
+                                    </a>
+                                </div><!-- .swiper-slide end -->
+                            </div><!-- .swiper-wrapper end -->
+                            <div class="swiper-pagination"></div>
+                        </div><!-- .swiper.review_slide end -->
+                    </div><!-- .inner end -->
+                </section><!-- .review end -->
+                <section class="ticket_open">
+                    <div class="inner">
+                        <h3>티켓오픈</h3>
+                        <div class="list">
+                            <a href="#" class="item">
+                                <img src="img/ticketopen1.jpg" alt="ticket-img1">
+                                <div class="box">
+                                    <ul>
+                                        <li>오페라</li>
+                                        <li>7세</li>
+                                    </ul>
+                                </div><!-- .box end -->
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <p>2025.09.11</p>
+                                        <span>15:00</span>
+                                    </div><!-- .text_wrap end -->
+                                    <strong>국립오페라단 <잔니 스키키></strong>
+                                </div><!-- .text end -->
+                            </a><!-- .item end -->
+                            <a href="#" class="item">
+                                <img src="img/ticketopen2.jpg" alt="ticket-img2">
+                                <div class="box">
+                                    <ul>
+                                        <li>뮤지컬</li>
+                                        <li>7세</li>
+                                    </ul>
+                                </div><!-- .box end -->
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <p>2025.09.22</p>
+                                        <span>14:00</span>
+                                    </div><!-- .text_wrap end -->
+                                    <strong>이머시브 뮤지컬 <부산포></strong>
+                                </div><!-- .text end -->
+                            </a><!-- .item end -->
+                            <a href="#" class="item">
+                                <img src="img/ticketopen3.jpg" alt="ticket-img3">
+                                <div class="box">
+                                    <ul>
+                                        <li>클래식</li>
+                                        <li>7세</li>
+                                    </ul>
+                                </div><!-- .box end -->
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <p>2025.10.23</p>
+                                        <span>17:00</span>
+                                    </div><!-- .text_wrap end -->
+                                    <strong>신창용 피아노 리사이틀 <전쟁소나타></strong>
+                                </div><!-- .text end -->
+                            </a><!-- .item end -->
+                            <a href="#" class="item">
+                                <img src="img/ticketopen4.jpg" alt="ticket-img4">
+                                <div class="box">
+                                    <ul>
+                                        <li>연극</li>
+                                        <li>7세</li>
+                                    </ul>
+                                </div><!-- .box end -->
+                                <div class="text">
+                                    <div class="text_wrap">
+                                        <p>2025.11.04</p>
+                                        <span>15:00</span>
+                                    </div><!-- .text_wrap end -->
+                                    <strong>연극 로제타</strong>
+                                </div><!-- .text end -->
+                            </a><!-- .item end -->
+                            <div class="more">
+                                <a href="#">
+                                    <img src="img/ticketopen-plus.svg" alt="more">
+                                    <p>더보기</p>
+                                </a>
+                            </div><!-- .more end -->
+                        </div><!-- .list end -->
+                    </div><!-- .inner end -->
+                </section><!-- .ticket_open end -->
+
+                <section class="news">
+                    <div class="inner">
+                        <div class="top">
+                            <div class="title">
+                                <h3 class="active">행사안내</h3>
+                                <h3>언론보도</h3>
+                            </div><!-- .title -->
+                            <div class="more">
+                                <a href="#">
+                                    <span>전체보기</span>
+                                    <img src="img/arrow-right-g.svg" alt="all">
+                                </a>
+                            </div><!-- .more end -->
+                        </div><!-- .top end -->
+                        <ul class="list active">
+                            <li><a href="#">
+                                <p>[기획공연] 토요야외콘서트 9월:로맨틱 영화음악 콘서트 9.6(토) 야외극장(루프씨어터)</p>
+                                <span>2025-08-29</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>[기획공연] 2025 영화의전당 시네마음악회 9.5(금) 야외극장(루프씨어터)</p>
+                                <span>2025-08-29</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>[기획공연] 연극 <로제타> 9.5(금)~9.6(토) 하늘연극장</p>
+                                <span>2025-08-29</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>[행사 안내] 2025 아세안영화제 부대행사 일정(8/28, 30, 31)</p>
+                                <span>2025-08-21</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>[기획] 2025 아세안영화제(8/28~8/31)</p>
+                                <span>2025-08-21</span>
+                            </a></li>
+                        </ul><!-- .list end -->
+                        <ul class="list">
+                            <li><a href="#">
+                                <p>영화의전당 들락날락 1주년 개소 기념 이벤트 개최</p>
+                                <span>2025-09-03</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>아세안 영화가 전하는 다채로운 이야기</p>
+                                <span>2025-08-21</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>‘제4회 하나뿐인지구영상제’ 영화의전당 온라인 예매 오픈</p>
+                                <span>2025-08-11</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>판타지와 서정적 드라마로 잔인한 현실을 그린 멕시코와 이란의 걸작들</p>
+                                <span>2025-08-11</span>
+                            </a></li>
+                            <li><a href="#">
+                                <p>2026 KoCACA 아트페스티벌 개최지 최종 선정</p>
+                                <span>2025-08-07</span>
+                            </a></li>
+                        </ul><!-- .list end -->
+                    </div><!-- .inner end -->
+                </section><!-- .news end -->
+                <section class="newsletter">
+                    <div class="inner">
+                        <h3>뉴스레터</h3>
+                        <p>영화의 전당 새로운 소식을 가장 먼저 받아보세요.</p>
+                        <div class="email">
+                            <input type="email" name="" id="" placeholder="e-mail을 작성해주세요" class="email_box">
+                            <input type="button" value="구독" class="email_btn">
+                        </div><!-- .email end -->
+                        <div class="checkbox">
+                            <input type="checkbox" name="agree" id="agree">
+                            <label for="agree">개인정보 이용내역에 동의합니다.</label>
+                        </div><!-- checkbox end -->
+                    </div><!-- .inner end -->
+                </section><!-- .newsletter end -->
+                <section class="notice">
+                    <div class="inner">
+                        <h3>공지사항</h3>
+                        <div class="notice_list">
+                            <p class="active">[공연] 기획공연 국립오페라단 <잔니 스키키> 티켓오픈 및 조기예매 할인 안내</p>
+                            <p>[공연] 2025 영화드라마 로케이션 투어 <로드씨어터> 참여 신청 안내(무료)</p>
+                            <p>[영화] 2025 영화비평 공모</p>
+                            <p>[공지] 정부지원 국민 영화관람 할인 종료 안내</p>
+                            <p>[공지] 영화의전당 나이트투어 여름 밤마실 안내(일정 변경)</p>
+                            <p>[공지] 2025년도 하반기 수시대관 안내(하늘연극장, 야외극장, 광장)</p>
+                        </div><!-- .notice_list end -->
+                    </div><!-- .inner end -->
+                </section><!-- .notice end -->
+            </div><!-- .wrap end -->
+
+        </main><!-- .main end -->
+        <footer class="footer">
+            <div class="top">
+                <div class="text">
+                    <button class="detail">
+                        <span>영화의 전당</span>
+                        <img class="before active" src="img/arrow-down-g.svg" alt="detail">
+                        <img class="after" src="img/arrow-up-g.svg" alt="up">
+                    </button><!-- .detail end -->
+                    <div class="detail_text">
+                        <p>(우)48058 부산광역시 해운대구 수영강변대로 120<br />
+                            영화의 전당(우동 1467번지)</p>
+                        <ul>
+                            <li>TEL : 051-780-6000/6080</li>
+                            <li>FAX : 051-780-6019</li>
+                        </ul>
+                        <ul>
+                            <li>(재)영화의전당</li>
+                            <li>대표자 : 고인범</li>
+                            <li>사업자번호 : 617-82-11427</li>
+                        </ul>
+                        <p>통신판매업신고 : 부산해운 제0510호 <a href="#">사업자정보 확인</a></p>
+                    </div><!-- .detail_text end -->
+                </div>
+                <div class="footer_logo">
+                    <a href="#"><img src="img/logo-g.svg" alt="logo_footer"></a>
+                </div><!-- .footer_logo end -->
+            </div><!-- .top end -->
+            <ul class="sns">
+                <li><a href="#"><img src="img/sns-facebook.svg" alt="facebook"></a></li>
+                <li><a href="#"><img src="img/sns-youtube.svg" alt="youtube"></a></li>
+                <li><a href="#"><img src="img/sns-instagram.svg" alt="instagram"></a></li>
+                <li><a href="#"><img src="img/sns-kakao.svg" alt="kakao"></a></li>
+                <li><a href="#"><img src="img/sns-naverblog.svg" alt="naverblog"></a></li>
+            </ul><!-- .sns end -->
+            <ul class="low">
+                <li><a href="#">오시는 길</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보처리방침</a></li>
+                <li><a href="#">PC버전</a></li>
+            </ul><!-- .low end -->
+            <p>COPYRIGHT © BUSAN CINEMA CENTER<br />
+                .ALL RIGHTS RESERVED.</p>
+        </footer><!-- .footer end -->
+        <div class="nav_bar">
+            <ul>
+                <li><a href="#">
+                    <img src="img/nav-schedule.svg" alt="schedule">
+                    <span>일정</span>
+                </a></li>
+                <li><a href="#">
+                    <img src="img/nav-feed.svg" alt="feed">
+                    <span>피드</span>
+                </a></li>
+                <li><a href="#">
+                    <img src="img/nav-home-act.png" alt="home">
+                    <span>홈</span>
+                </a></li>
+                <li><a href="#">
+                    <img src="img/nav-search.svg" alt="search">
+                    <span>검색</span>
+                </a></li>
+                <li><a href="#">
+                    <img src="img/nav-menu.svg" alt="menu">
+                    <span>메뉴</span>
+                </a></li>
+            </ul>
+        </div><!-- .nav_bar end -->
+    </div><!-- #wrap end -->
 </body>
 </html>
