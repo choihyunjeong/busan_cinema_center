@@ -214,6 +214,9 @@
     display: flex;
     justify-content: center;
 }
+.section-01 .inner .date::-webkit-scrollbar {
+    display: none;
+}
 .section-01 .inner .date ul {
     display: flex;
     justify-content: center;
@@ -246,6 +249,7 @@
     border-radius: 24px;
     padding: 40px;
     transform: scale(0.8);
+    transition: all 0.5s;
 }
 .section-01 .inner .swiper.schedule_slide .swiper-wrapper .swiper-slide.swiper-slide-active {
     background-color: #F6F6F6;
@@ -254,6 +258,7 @@
 .section-01 .inner .swiper.schedule_slide .swiper-wrapper .swiper-slide strong {
     display: block;
     font-size: 22px;
+    font-weight: 600;
     margin-bottom: 24px;
     text-align: center;
 }
@@ -656,7 +661,7 @@
 }
 .review .inner h3 {
     font-family: Paperlogy;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     margin-left: 8px;
     margin-bottom: 24px;
@@ -1060,6 +1065,9 @@
     .header .util .ticket {
         width: 28px;
     }
+    .header .util .global {
+        font-size: 16px;
+    }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide {
         padding: 90px 0 99px;
     }
@@ -1074,7 +1082,7 @@
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text p {
         font-size: 16px;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text h2 {
         font-size: 26px;
@@ -1104,8 +1112,9 @@
         white-space: nowrap;
     }
     .section-01 .inner h3 {
-        font-size: 24px;
+        font-size: 22px;
         text-align: left;
+        margin-bottom: 18px;
     }
     .section-01 .inner .date {
         justify-content: flex-start;
@@ -1127,7 +1136,8 @@
         margin: 60px 0 80px;
     }
     .event .inner h3 {
-        font-size: 24px;
+        font-size: 22px;
+        margin-bottom: 18px;
     }
     .event .inner .swiper.event_slide .swiper-wrapper .swiper-slide a img {
         height: 110px;
@@ -1140,8 +1150,8 @@
         padding: 50px 20px;
     }
     .program .inner h3 {
-        font-size: 24px;
-        margin-bottom: 24px;
+        font-size: 22px;
+        margin-bottom: 18px;
     }
     .program .inner .tab {
         font-size: 16px;
@@ -1152,6 +1162,22 @@
     }
     .program .inner .detail {
         margin-top: 40px;
+    }
+    .review .inner h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+    .ticket_open .inner h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+    .news .inner .top .title h3 {
+        font-size: 22px;
+        padding: 0 6px 8px;
+    }
+    .newsletter .inner h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
     }
     .footer {
         top: 3659px;
