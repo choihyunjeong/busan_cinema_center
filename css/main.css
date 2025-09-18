@@ -1046,7 +1046,7 @@
 .footer {
     width: 100%;
     position: absolute;
-    top: 4332px;
+    top: 5238px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -1126,7 +1126,7 @@
         font-size: 16px;
     }
     .section-01 .inner .swiper.schedule_slide .swiper-wrapper .swiper-slide {
-        height: 343px;
+        height: 330px;
         padding: 30px 26px;
     }
     .section-01 .inner .swiper.schedule_slide .swiper-wrapper .swiper-slide strong {
@@ -1180,6 +1180,6 @@
         margin-bottom: 18px;
     }
     .footer {
-        top: 3659px;
+        top: 3552px;
     }
 }
