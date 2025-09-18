@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/main.css">
 
+    <script src="lib/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         window.onload = () => {
@@ -26,6 +27,12 @@
                 slidesPerView: 1.4,
                 spaceBetween: 20,
                 centeredSlides: true,
+                breakpoints: {
+                    550 : {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    }
+                }
             });
             var swiper = new Swiper(".event_slide", {
                 rewind: true,
@@ -87,7 +94,7 @@
                 detailText.classList.remove('active');
             });
 
-            let dateBtn = document.querySelectorAll('.date button');
+            let dateBtn = document.querySelectorAll('.date_wrapper li');
             
             for(let i = 0; i < dateBtn.length; i++) {
                 dateBtn[i].addEventListener('click', () => {
@@ -97,6 +104,48 @@
                     dateBtn[i].classList.add('active');
                 });
             }
+
+            var $scrItem = $('.date_wrapper li');
+            var scrIWidth = 0;
+            for (var i=0; i<$scrItem.length; i++) {
+                scrIWidth += $scrItem.eq(i).innerWidth();
+            }
+            $('.date_wrapper').css('width',scrIWidth)
+            $scrItem.click(function(){
+                var target = $(this); 
+                $scrItem.removeClass('on')
+                target.addClass('on');
+                muCenter(target);
+            })
+            function muCenter(target){
+                var box = $('.date');
+                var boxItem = box.find('.date_wrapper li');
+                var boxHarf = box.width()/2;
+                var pos;
+                var listWidth=0;
+                var targetLeft = 0;
+
+                boxItem.each(function(){ listWidth += $(this).innerWidth(); })    
+                
+                for (var i=0; i<target.index(); i++) targetLeft += boxItem.eq(i).innerWidth(); // 선택요소 까지 길이
+                
+                var selectTargetPos = (targetLeft + target.innerWidth()/2);
+                if (selectTargetPos <= boxHarf) { // left
+                    pos = 0;
+                }else if (listWidth - selectTargetPos <= boxHarf) { //right : target 절반 이후 영역이 boxHarf 보다 작을경우 right 정렬
+                    pos = listWidth-box.width();
+                }else {
+                    pos = selectTargetPos - boxHarf; // 중앙정렬
+                }
+                
+                setTimeout(function(){
+                    box.animate({scrollLeft:pos},300)
+                }, 200);
+                
+            }
+
+            let targetToday = $('.date_wrapper li.on')
+            muCenter(targetToday)
 
             
         };//script end
@@ -290,56 +339,56 @@
                     <div class="inner">
                         <h3>상영시간표</h3>
                         <div class="date">
-                            <ul>
-                                <li><button>
+                            <ul class="date_wrapper">
+                                <li><button class="date_item">
                                     <p>금</p>
                                     <span>28</span>
-                                </button></li>
-                                <li><button>
+                                </button class="date_item"></li>
+                                <li><button class="date_item">
                                     <p>토</p>
                                     <span>29</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>일</p>
                                     <span>31</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>월</p>
                                     <span>01</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>화</p>
                                     <span>02</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>수</p>
                                     <span>03</span>
                                 </button></li>
-                                <li><button class="active">
+                                <li class="active on"><button class="date_item">
                                     <p>오늘</p>
                                     <span>04</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>내일</p>
                                     <span>05</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>토</p>
                                     <span>06</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>일</p>
                                     <span>07</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>월</p>
                                     <span>08</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>화</p>
                                     <span>09</span>
                                 </button></li>
-                                <li><button>
+                                <li><button class="date_item">
                                     <p>수</p>
                                     <span>10</span>
                                 </button></li>
