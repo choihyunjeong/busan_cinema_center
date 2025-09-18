@@ -223,7 +223,7 @@
 }
 .section-01 .inner .date ul li {
     width: auto;
-    padding: 10px;
+    padding: 10px 13px;
 }
 .section-01 .inner .date ul li .date_item {
     display: flex;
@@ -231,11 +231,13 @@
     gap: 2px;
     white-space: nowrap;
 }
+.section-01 .inner .date ul li.active {
+    background-color: rgba(228, 0, 127, 0.7);
+    border-radius: 100px;
+}
 .section-01 .inner .date ul li.active button {
     color: #fff;
     font-weight: 500;
-    background-color: rgba(228, 0, 127, 0.7);
-    border-radius: 10px;
 }
 .section-01 .inner .date ul li .date_item p {
     font-size: 16px;
