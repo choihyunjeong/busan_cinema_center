@@ -561,21 +561,22 @@
     background-color: #999;
 }
 .program .inner {
-    padding: 50px 20px;
+    padding: 80px 40px;
     background-color: #3A3E6C;
 }
 .program .inner h3 {
     font-family: Paperlogy;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     margin-left: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     color: #fff;
 }
 .program .inner .tab {
     padding: 0 8px;
     display: flex;
-    margin-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 30px;
     color: #ccc;
     font-weight: 500;
 }
@@ -604,7 +605,7 @@
 }
 .program .inner .list .item img {
     width: 29.85%;
-    height: 136px;
+    height: 400px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -629,7 +630,7 @@
 .program .inner .detail {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 .program .inner .detail a {
     display: flex;
@@ -1057,7 +1058,7 @@
         gap: 16px;
     }
     .header .util .ticket {
-        width: 26px;
+        width: 28px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide {
         padding: 90px 0 99px;
@@ -1076,7 +1077,7 @@
         margin-bottom: 6px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text h2 {
-        font-size: 30px;
+        font-size: 26px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text {
         width: 295px;
@@ -1124,6 +1125,23 @@
     }
     .event .swiper-pagination-fraction {
         bottom: -22px;
+    }
+    .program .inner {
+        padding: 50px 20px;
+    }
+    .program .inner h3 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+    .program .inner .tab {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .program .inner .list .item img {
+        height: 136px;
+    }
+    .program .inner .detail {
+        margin-top: 40px;
     }
     .footer {
         top: 3659px;
