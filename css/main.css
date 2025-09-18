@@ -873,7 +873,7 @@
 .news .inner .top .title h3 {
     font-family: Paperlogy;
     font-size: 24px;
-    font-weight: 500px;
+    font-weight: 600px;
     color: #777;
     padding: 0 8px 14px;
 }
@@ -1174,7 +1174,7 @@
         margin-bottom: 18px;
     }
     .news .inner .top .title h3 {
-        font-size: 22px;
+        font-size: 20px;
         padding: 0 6px 8px;
     }
     .newsletter .inner h3 {
