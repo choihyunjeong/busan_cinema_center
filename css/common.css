@@ -215,3 +215,8 @@ body {
         margin-top: 0;
     }
 }
+@media screen and (min-width:551px) and (max-width:875px) {
+    .nav_bar {
+        padding: 6px 80px;
+    }
+}
