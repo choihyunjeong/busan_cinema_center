@@ -12,7 +12,7 @@
 
             const daysTag = document.querySelector(".days"),
                 currentDate = document.querySelector(".current-date"),
-                prevNextIcon = document.querySelectorAll(".icons span");
+                prevNextIcon = document.querySelectorAll(".icons img");
 
             // getting new date, current year and month
             let date = new Date(),
@@ -21,18 +21,18 @@
 
             // storing full name of all months in array
             const months = [
-                "1월",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "9월",
-                "October",
-                "November",
-                "December"
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "09",
+                "10",
+                "11",
+                "12"
             ];
 
             const renderCalendar = () => {
@@ -63,7 +63,7 @@
                     // creating li of next month first days
                     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
                 }
-                currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+                currentDate.innerText = `${currYear}.${months[currMonth]}`; // passing current mon and yr as currentDate text
                 daysTag.innerHTML = liTag;
             };
             renderCalendar();
@@ -105,38 +105,49 @@
         </header><!-- .header end -->
 
         <nav class="nav">
-            <a href="#">
-                <h3>월간일정</h3>
-            </a>
-            <a href="#">
-                <h3>연간일정</h3>
-            </a>
+            <a href="#"><h3 class="active">월간일정</h3></a>
+            <a href="#"><h3>연간일정</h3></a>
         </nav><!-- .nav end -->
 
-        <section class="section">
-            <div class="wrapper">
-                <div class="calendar-header">
-                    <p class="current-date"></p>
-                    <div class="icons">
-                        <span id="prev" class="material-symbols-rounded">
-                            < </span>
-                                <span id="next" class="material-symbols-rounded"> > </span>
-                    </div><!-- .icons end -->
-                </div><!-- calendar-header end -->
-                <div class="calendar">
-                    <ul class="weeks">
-                        <li>Sun</li>
-                        <li>Mon</li>
-                        <li>Tue</li>
-                        <li>Wed</li>
-                        <li>Thu</li>
-                        <li>Fri</li>
-                        <li>Sat</li>
-                    </ul><!-- .weeks end -->
-                    <ul class="days"></ul>
-                </div><!-- .calendar end -->
-            </div><!-- .wrapper end -->
-        </section><!-- .section end -->
+        <main class="main">
+            <section class="section-01">
+                <div class="wrapper">
+                    <div class="calendar-header">
+                        <div class="date_wrap">
+                            <p class="current-date"></p>
+                        </div>
+                        <div class="icons">
+                            <img src="../img/arrow-right-b.svg" alt="" id="prev" class="material-symbols-rounded">
+                            <img src="../img/arrow-left-b.svg" alt="" id="next" class="material-symbols-rounded">
+                        </div><!-- .icons end -->
+                    </div><!-- calendar-header end -->
+                    <div class="calendar">
+                        <ul class="weeks">
+                            <li>월</li>
+                            <li>화</li>
+                            <li>수</li>
+                            <li>목</li>
+                            <li>금</li>
+                            <li>토</li>
+                            <li>일</li>
+                        </ul><!-- .weeks end -->
+                        <ul class="days"></ul>
+                    </div><!-- .calendar end -->
+                </div><!-- .wrapper end -->
+                <div class="box">
+                    <div class="circle"></div>
+                    <p>선택일</p>
+                </div><!-- .box end -->
+            </section><!-- .section-01 end -->
+
+            <section class="section-02">
+                <div class="inner">
+                    <a href="#"><img src="../img/up-g.svg" alt=""></a>
+                    <h3>2029.09.05 (목)</h3>
+                </div><!-- .inner end -->
+            </section><!-- .section-02 end -->
+        </main><!-- .main end -->
+
 
         <div class="nav_bar">
             <ul>
