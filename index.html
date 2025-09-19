@@ -14,6 +14,7 @@
             var swiper = new Swiper(".mainslide", {
                 spaceBetween: 30,
                 centeredSlides: true,
+                rewind: true,
                 autoplay: {
                     delay: 10000,
                     disableOnInteraction: false,
@@ -27,14 +28,17 @@
                 slidesPerView: 1.35,
                 spaceBetween: 5,
                 centeredSlides: true,
+                rewind: true,
                 breakpoints: {
                     550 : {
-                        slidesPerView: 3,
+                        slidesPerView: 3.2,
                         spaceBetween: 20
                     }
                 }
             });
             var swiper = new Swiper(".event_slide", {
+                slidesPerView: 2,
+                spaceBetween: 20,
                 rewind: true,
                 pagination: {
                     el: ".swiper-pagination",
@@ -502,11 +506,11 @@
                                 </div><!-- .swiper-slide end -->
                                 <div class="swiper-slide">
                                     <strong>하늘연극장</strong>
-                                    <p>상영되는 영화가 없습니다.</p>
+                                    <p>상영되는 영화, 공연이 없습니다.</p>
                                 </div><!-- .swiper-slide end -->
                                 <div class="swiper-slide">
                                     <strong>야외극장</strong>
-                                    <p>상영되는 영화가 없습니다.</p>
+                                    <p>상영되는 영화, 공연이 없습니다.</p>
                                 </div><!-- .swiper-slide end -->
                             </div><!-- .swiper-wrapper end -->
                         </div><!-- .swiper.schedule_slide end -->

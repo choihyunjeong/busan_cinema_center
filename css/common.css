@@ -11,7 +11,8 @@ body {
 }
 .footer {
     max-width: 1024px;
-    padding: 24px 20px 90px;
+    width: 100%;
+    padding: 30px 40px 100px;
     background-color: #ddd;
 }
 .footer .top {
@@ -21,22 +22,28 @@ body {
     position: relative;
 }
 .footer .top .text {
-    font-size: 13px;
+    font-size: 15px;
     color: #777;
-    line-height: 1.4;
+    line-height: 1.3;
+}
+.footer .top .text a {
+    text-decoration: underline;
+}
+.footer .top .text p {
+    margin-top: 0;
 }
 .footer .top .text .detail {
     display: flex;
-    gap: 4px;
+    align-items: center;
+    gap: 8px;
     padding: 0;
 }
 .footer .top .text .detail span {
-    font-size: 14px;
+    font-size: 16px;
     color: #777;
 }
 .footer .top .text .detail img {
-    width: 16px;
-    height: 16px;
+    width: 20px;
     object-fit: cover;
 }
 .footer .top .text .detail .before {
@@ -92,39 +99,60 @@ body {
     right: -12px;
 }
 .footer .top .footer_logo {
+    height: 40px;
     position: absolute;
     top: 0;
     right: 0;
 }
+.footer .top .footer_logo a {
+    display: block;
+    height: 100%;
+}
+.footer .top .footer_logo a img {
+    height: 100%;
+    object-fit: cover;
+}
 .footer .sns {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px;
-    margin: 30px 0 20px;
+    margin: 40px 0 20px;
+}
+.footer .sns li {
+    width: 40px;
+    height: 40px;
 }
 .footer .sns li a {
-    width: 35px;
-    height: 35px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.footer .sns li a img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 .footer .low {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     color: #777;
-    font-size: 13px;
+    font-size: 15px;
 }
-.footer p {
+.footer p:last-child {
     color: #777;
-    font-size: 13px;
+    font-size: 15px;
+    margin-top: 6px;
 }
 .nav_bar {
+    max-width: 1024px;
     width: 100%;
     height: 60px;
     background-color: #ffffffe7;
     position: fixed;
-    left: 0;
+    left: 50%;
     bottom: 0;
-    padding: 6px 30px;
+    transform: translateX(-50%);
+    padding: 6px 200px;
     z-index: 999;
 }
 .nav_bar ul {
@@ -144,4 +172,46 @@ body {
 .nav_bar ul li a span {
     font-size: 14px;
     font-weight: 500;
+}
+
+@media screen and (max-width:550px) {
+    .nav_bar {
+        padding: 6px 30px;
+    }
+    .footer {
+        padding: 24px 20px 90px;
+    }
+    .footer .top .text {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    .footer .top .text .detail {
+        gap: 4px;
+    }
+    .footer .top .text .detail span {
+        font-size: 14px;
+    }
+    .footer .top .text .detail img {
+        width: 16px;
+        object-fit: cover;
+    }
+    .footer .top .footer_logo {
+        height: 25px;
+    }
+    .footer .sns {
+        justify-content: center;
+        margin: 30px 0 20px;
+    }
+    .footer .sns li {
+        width: 35px;
+        height: 35px;
+    }
+    .footer .low {
+        font-size: 13px;
+        gap: 10px;
+    }
+    .footer p:last-child {
+        font-size: 13px;
+        margin-top: 0;
+    }
 }
