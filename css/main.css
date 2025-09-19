@@ -107,6 +107,7 @@
     width: 100%;
     height: 545px;
     object-fit: cover;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.3);
 }
 .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text {
     width: 100%;
@@ -1077,26 +1078,26 @@
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide a img {
         display: block;
-        width: 84.74%;
-        height: 341px;
+        width: 77.96%;
+        height: 300px;
         object-fit: cover;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text p {
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 14px;
+        margin-bottom: 4px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text h2 {
-        font-size: 26px;
+        font-size: 24px;
     }
     .main_visual .swiper.mainslide .swiper-wrapper .swiper-slide .text {
         width: 295px;
-        margin-top: 20px;
+        margin-top: 16px;
     }
     .main_visual .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-        bottom: 65px;
+        bottom: 70px;
     }
     .wrap {
-        top: 582px;
+        top: 522px;
     }
     .sub_category ul {
         justify-content: flex-start;
@@ -1228,7 +1229,7 @@
     .review .swiper-pagination-bullets.swiper-pagination-horizontal, 
     .review .swiper-pagination-custom, 
     .review .swiper-pagination-fraction {
-        bottom: 38px;
+        bottom: 35px;
     }
     .ticket_open .inner h3 {
         font-size: 22px;
@@ -1267,6 +1268,6 @@
         font-size: 14px;
     }
     .footer {
-        top: 3543px;
+        top: 3483px;
     }
 }

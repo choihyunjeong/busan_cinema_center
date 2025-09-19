@@ -37,12 +37,17 @@
                 }
             });
             var swiper = new Swiper(".event_slide", {
-                slidesPerView: 2,
-                spaceBetween: 20,
+                slidesPerView: 1,
                 rewind: true,
                 pagination: {
                     el: ".swiper-pagination",
                 },
+                breakpoints: {
+                    550 : {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    }
+                }
             });
             var swiper = new Swiper(".review_slide", {
                 pagination: {
