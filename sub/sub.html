@@ -14,10 +14,14 @@
                 currentDate = document.querySelector(".current-date"),
                 prevNextIcon = document.querySelectorAll(".icons img");
 
+            let week = document.querySelectorAll('.weeks li');
+
             // getting new date, current year and month
             let date = new Date(),
                 currYear = date.getFullYear(),
                 currMonth = date.getMonth();
+
+            let dayTitle = document.querySelector('.section-02 h3');
 
             // storing full name of all months in array
             const months = [
@@ -42,6 +46,18 @@
                     lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
                 let liTag = "";
 
+                const dayOfWeek = new Date().getDay();
+
+                switch (dayOfWeek) {
+                    case 0: weekDay = '일'; break;
+                    case 1: weekDay = '월'; break;
+                    case 2: weekDay = '화'; break;
+                    case 3: weekDay = '수'; break;
+                    case 4: weekDay = '목'; break;
+                    case 5: weekDay = '금'; break;
+                    case 6: weekDay = '토'; break;
+                }
+
                 for (let i = firstDayofMonth; i > 0; i--) {
                     // creating li of previous month last days
                     liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
@@ -65,6 +81,19 @@
                 }
                 currentDate.innerText = `${currYear}.${months[currMonth]}`; // passing current mon and yr as currentDate text
                 daysTag.innerHTML = liTag;
+
+                let liActive = document.querySelectorAll(".days li") 
+                console.log(liActive)
+                for (let i = 0; i < liActive.length; i++) {
+                    liActive[i].addEventListener('click', () => {
+                        dayTitle.innerHTML = currentDate.innerHTML + '.' + liActive[i].innerHTML +  `<span> (${weekDay})</span>`
+                        liActive.forEach(liActiveIndex => {
+                            liActiveIndex.classList.remove('act');
+                        });
+                        liActive[i].classList.add('act')
+                    });
+                }
+
             };
             renderCalendar();
 
