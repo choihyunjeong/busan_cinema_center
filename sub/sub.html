@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월간일정</title>
+    <link rel="stylesheet" href="../css/sub.css">
+
+    <script>
+        window.onload = () => {
+
+            const daysTag = document.querySelector(".days"),
+                currentDate = document.querySelector(".current-date"),
+                prevNextIcon = document.querySelectorAll(".icons img");
+
+            let week = document.querySelectorAll('.weeks li');
+            let monthItem = document.querySelectorAll('.section-02 .item');
+            
+            // getting new date, current year and month
+            let date = new Date(),
+                currYear = date.getFullYear(),
+                currMonth = date.getMonth();
+
+            let dayTitle = document.querySelector('.section-02 h3');
+            let monthListTitle = document.querySelectorAll('.list_date');
+            // storing full name of all months in array
+            const months = [
+                "01",
+                "02",
+                "03",
+                "04",
+                "05",
+                "06",
+                "07",
+                "08",
+                "09",
+                "10",
+                "11",
+                "12"
+            ];
+
+            const renderCalendar = () => {
+                let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
+                    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
+                    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
+                    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+                let liTag = "";
+
+                const dayOfWeek = new Date().getDay();
+
+                switch (dayOfWeek) {
+                    case 0: weekDay = '일'; break;
+                    case 1: weekDay = '월'; break;
+                    case 2: weekDay = '화'; break;
+                    case 3: weekDay = '수'; break;
+                    case 4: weekDay = '목'; break;
+                    case 5: weekDay = '금'; break;
+                    case 6: weekDay = '토'; break;
+                }//요일
+
+                for (let i = firstDayofMonth; i > 0; i--) {
+                    // creating li of previous month last days
+                    liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+                }
+
+                for (let i = 1; i <= lastDateofMonth; i++) {
+                    // creating li of all days of current month
+                    // adding active class to li if the current day, month, and year matched
+                    let isToday =
+                        i === date.getDate() &&
+                            currMonth === new Date().getMonth() &&
+                            currYear === new Date().getFullYear()
+                            ? "active"
+                            : "";
+                    liTag += `<li class="${isToday}">${i}</li>`;
+                }
+
+                for (let i = lastDayofMonth; i < 6; i++) {
+                    // creating li of next month first days
+                    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
+                }
+                currentDate.innerText = `${currYear}.${months[currMonth]}`; // passing current mon and yr as currentDate text
+                daysTag.innerHTML = liTag;
+                
+                let liActive = document.querySelectorAll(".days li") ;
+                let monthList = document.querySelector(".section-02 .list");
+                let monthTab = document.querySelector(".section-02 .list_tab");
+                
+                
+                for (let i = 0; i < liActive.length; i++) {
+                    liActive[i].addEventListener('click', () => {
+                        dayTitle.innerHTML = currentDate.innerHTML + '.' + liActive[i].innerHTML +  `<span> (${weekDay})</span>`;
+                        monthListTitle.forEach(monthListTitleIndex => {
+                            monthListTitleIndex.innerHTML = currentDate.innerHTML + '.' + liActive[i].innerHTML;
+                        });
+                        liActive.forEach(liActiveIndex => {
+                            liActiveIndex.classList.remove('act');
+                        });
+                        liActive[i].classList.add('act');
+                        monthTab.classList.add('active');
+                        monthItem.forEach(monthItemIndex => {
+                            monthItemIndex.classList.add('active');
+                        });
+                    });
+                };
+            };
+
+
+            renderCalendar();
+
+            prevNextIcon.forEach((icon) => {
+                // getting prev and next icons
+                icon.addEventListener("click", () => {
+                    // adding click event on both icons
+                    // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
+                    currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+                    if (currMonth < 0 || currMonth > 11) {
+                        // if current month is less than 0 or greater than 11
+                        // creating a new date of current year & month and pass it as date value
+                        date = new Date(currYear, currMonth, new Date().getDate());
+                        currYear = date.getFullYear(); // updating current year with new date year
+                        currMonth = date.getMonth(); // updating current month with new date month
+                    } else {
+                        date = new Date(); // pass the current date as date value
+                    }
+                    renderCalendar(); // calling renderCalendar function
+                });
+            });
+
+        let monthTabBtn = document.querySelectorAll('.list_tab li');
+            
+        let monthPerformance = document.querySelectorAll('.item.performance');
+        let monthMovie = document.querySelectorAll('.item.movie');
+        let monthEtc = document.querySelectorAll('.item.etc');
+            
+        for(let i = 0; i < monthTabBtn.length; i++) {
+            monthTabBtn[i].addEventListener('click', () => {
+                monthTabBtn.forEach(monthTabBtnIndex => {
+                    monthTabBtnIndex.classList.remove('active');
+                });
+                monthTabBtn[i].classList.add('active');
+            });
+        };
+        for(let i = 0; i < monthItem.length; i++) {
+            monthTabBtn[0].addEventListener('click', () => {
+                monthItem.forEach(monthItemIndex => {
+                    monthItemIndex.classList.add('active');
+                });
+            });
+        };
+        for(let i = 0; i < monthItem.length; i++) {
+            monthTabBtn[1].addEventListener('click', () => {
+                monthItem.forEach(monthItemIndex => {
+                    monthItemIndex.classList.remove('active');
+                });
+                monthMovie.forEach(monthMovieIndex => {
+                    monthMovieIndex.classList.add('active');
+                });
+            });
+        };
+        for(let i = 0; i < monthItem.length; i++) {
+            monthTabBtn[2].addEventListener('click', () => {
+                monthItem.forEach(monthItemIndex => {
+                    monthItemIndex.classList.remove('active');
+                });
+                monthPerformance.forEach(monthPerformanceIndex => {
+                    monthPerformanceIndex.classList.add('active');
+                });
+            });
+        };
+        for(let i = 0; i < monthItem.length; i++) {
+            monthTabBtn[3].addEventListener('click', () => {
+                monthItem.forEach(monthItemIndex => {
+                    monthItemIndex.classList.remove('active');
+                });
+                monthEtc.forEach(monthEtcIndex => {
+                    monthEtcIndex.classList.add('active');
+                });
+            });
+        };
+        
+        let navTab = document.querySelectorAll('.nav h3');
+        for(let i = 0; i < navTab.length; i++) {
+            navTab[i].addEventListener('click', () => {
+                navTab.forEach(navTabIndex => {
+                    navTabIndex.classList.remove('active');
+                });
+                navTab[i].classList.add('active');
+            });
+        }
+            
+
+
+
+        };//script end
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header class="header">
+            <div class="inner">
+                <div class="icon">
+                    <a href="../index.html" onclick="history.back();"><img src="../img/back.svg" alt="back"></a>
+                    <a href="#"><img src="../img/search-b.svg" alt="search"></a>
+                </div><!-- .icon end -->
+                <h2>일정</h2>
+            </div><!-- .inner end -->
+        </header><!-- .header end -->
+
+        <nav class="nav">
+            <h3 class="active">월간일정</h3>
+            <h3>연간일정</h3>
+        </nav><!-- .nav end -->
+
+        <main class="main">
+            <section class="section-01">
+                <div class="wrapper">
+                    <div class="calendar-header">
+                        <div class="date_wrap">
+                            <p class="current-date"></p>
+                        </div>
+                        <div class="icons">
+                            <img src="../img/arrow-right-b.svg" alt="" id="prev" class="material-symbols-rounded">
+                            <img src="../img/arrow-left-b.svg" alt="" id="next" class="material-symbols-rounded">
+                        </div><!-- .icons end -->
+                    </div><!-- calendar-header end -->
+                    <div class="calendar">
+                        <ul class="weeks">
+                            <li>월</li>
+                            <li>화</li>
+                            <li>수</li>
+                            <li>목</li>
+                            <li>금</li>
+                            <li>토</li>
+                            <li>일</li>
+                        </ul><!-- .weeks end -->
+                        <ul class="days"></ul>
+                    </div><!-- .calendar end -->
+                </div><!-- .wrapper end -->
+                <div class="box">
+                    <div class="circle"></div>
+                    <p>선택일</p>
+                </div><!-- .box end -->
+            </section><!-- .section-01 end -->
+
+            <section class="section-02">
+                <div class="inner">
+                    <button class="monthlist_btn"><img src="../img/up-g.svg" alt="up"></button>
+                    <h3></h3>
+                    <div class="month_list">
+                        <ul class="list_tab">
+                            <li class="active">전체</li>
+                            <li>영화</li>
+                            <li>공연</li>
+                            <li>전시/행사</li>
+                        </ul><!-- .list_tab end -->
+                        <div class="list">
+                            <div class="item performance">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist1.png" alt="item_img-1"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>2025 영화의전당 시네마 음악회</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>19:30</li>
+                                        </ul>
+                                        <span>야외극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item performance">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist2.jpg" alt="item_img-2"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>영화드라마 로케이션 투어 <로드씨어터></strong>
+                                        <ul>
+                                            <li>2025.08.18 ~ 2025.09.22</li>
+                                        </ul>
+                                        <span>영화의 전당 일대</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">무료</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item etc">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist3.jpg" alt="item_img-3"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>상상공작소 '매직월드'</strong>
+                                        <ul>
+                                            <li>~ 2025.09.31</li>
+                                            <li>10:00 ~ 19:00</li>
+                                        </ul>
+                                        <span>다목적홀(전시실)</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist4.jpg" alt="item_img-4"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>F1 더 무비</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.11</li>
+                                            <li>09:30</li>
+                                        </ul>
+                                        <span>중극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist5.jpg" alt="item_img-5"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>좀비딸</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.11</li>
+                                            <li>12:30</li>
+                                            <li>17:10</li>
+                                        </ul>
+                                        <span>중극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist6.jpg" alt="item_img-6"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>수연의 선율</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>13:10</li>
+                                        </ul>
+                                        <span>인디플러스</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist7.jpg" alt="item_img-7"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>오키나와 블루노트</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>15:20</li>
+                                        </ul>
+                                        <span>인디플러스</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist8.jpg" alt="item_img-8"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>킹 오브 킹스(더빙)</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>15:30</li>
+                                        </ul>
+                                        <span>중극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item movie">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist9.jpg" alt="item_img-9"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>일과 날</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>17:40</li>
+                                        </ul>
+                                        <span>인디플러스</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item performance">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist10.jpg" alt="item_img-10"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>국립극단 <십이야></strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>19:30</li>
+                                        </ul>
+                                        <span>하늘연극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                            <div class="item performance">
+                                <div class="image">
+                                    <a href="#"><img src="../img/monthlist111.jpg" alt="item_img-11"></a>
+                                </div><!-- .image end -->
+                                <div class="text">
+                                    <a href="#">
+                                        <strong>2025 제16회 부산마루국제음악제 부산국제영상음악제</strong>
+                                        <ul>
+                                            <li class="list_date">2025.09.05</li>
+                                            <li>20:00</li>
+                                        </ul>
+                                        <span>야외극장</span>
+                                    </a>
+                                </div><!-- .text end -->
+                                <div class="book_btn">
+                                    <a href="#">예매하기</a>
+                                </div><!-- .book_btn -->
+                            </div><!-- .item end -->
+                        </div><!-- .list end -->
+                    </div><!-- .month_list end -->
+                </div><!-- .inner end -->
+            </section><!-- .section-02 end -->
+            <section class="yearschedule">
+                <div class="inner">
+                    
+                </div><!-- .inner end -->
+            </section><!-- .yearschedule end -->
+        </main><!-- .main end -->
+
+
+        <div class="nav_bar">
+            <ul>
+                <li><a href="#">
+                        <img src="../img/nav-schedule-act.svg" alt="schedule">
+                        <span>일정</span>
+                    </a></li>
+                <li><a href="#">
+                        <img src="../img/nav-feed.svg" alt="feed">
+                        <span>피드</span>
+                    </a></li>
+                <li><a href="../index.html">
+                        <img src="../img/nav-home.svg" alt="home">
+                        <span>홈</span>
+                    </a></li>
+                <li><a href="#">
+                        <img src="../img/nav-search.svg" alt="search">
+                        <span>검색</span>
+                    </a></li>
+                <li><a href="#">
+                        <img src="../img/nav-menu.svg" alt="menu">
+                        <span>메뉴</span>
+                    </a></li>
+            </ul>
+        </div><!-- .nav_bar end -->
+    </div><!-- #wrap end -->
+</body>
+
+</html>
